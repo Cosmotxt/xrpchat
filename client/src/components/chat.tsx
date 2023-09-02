@@ -29,6 +29,19 @@ export function Chat() {
     const messageEndRef = useRef<HTMLDivElement>(null);
     const [userId, setUserId] =  useState(0);
     const [tipsView, setTipsView] = useState('flex flex-wrap justify-center w-[650px] gap-10 mt-48 absolute')
+    const express = require('express');
+    const cors = require('cors');
+
+    const app = express();
+
+    const corsOptions = {
+        origin: 'https://veguinha.vercel.app',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        credentials: true,
+        optionsSuccessStatus: 204,
+    };
+
+    app.use(cors(corsOptions));
     
     
     const handleInput = async () => {
