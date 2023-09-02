@@ -11,6 +11,8 @@ import { Skeleton } from "./ui/skeleton"
 import MarkdownRenderer from "./markdownrender"
 import { Label } from '@radix-ui/react-label'
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from './ui/dialog'
+import { useDropzone } from 'react-dropzone';
+
 
 function getRandomInt(min: number, max: number): number {
     min = Math.ceil(min);
@@ -22,13 +24,25 @@ let messageId = 0
 
 export function Chat() {
     const [isLoading, setIsLoading] = useState(false);
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedImage, setSelectedImage] = useState<File | null>(null);
     const [input, setInput] = useState('');
     const [selectedLang, setSelectedLang] = useState('pt')
     const [messages, setMessages] = useState<any[]>([]);
     const messageEndRef = useRef<HTMLDivElement>(null);
     const [userId, setUserId] =  useState(0);
     const [tipsView, setTipsView] = useState('flex flex-wrap justify-center w-[650px] gap-10 mt-48 absolute')
+
+    const onDrop = (acceptedFiles: File[]) => {
+        if (acceptedFiles.length > 0) {
+          const file = acceptedFiles[0];
+          setSelectedImage(file);
+        }
+      };
+
+    const { getRootProps, getInputProps } = useDropzone({
+        onDrop,
+    });
+    
     
     const handleInput = async () => {
         setInput('');
@@ -88,6 +102,8 @@ export function Chat() {
             handleInput() 
         }
     }
+
+
     useEffect(() => {
         setUserId(getRandomInt(1, 1000000));
     },[])
@@ -134,13 +150,15 @@ export function Chat() {
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div className="grid grid-cols-4 items-center gap-4">
+                                            <div {...getRootProps()} className="grid grid-cols-4 items-center gap-4">
                                                 <Label htmlFor="avatar" className="text-right">
                                                     Avatar:
                                                 </Label>
-                                                <Input type="file" name="avatar" className='w-[250px] cursor-pointer' accept="image/*" />
+                                                <Input type="file" name="avatar" accept='image/*' className="w-[250px] cursor-pointer" />
                                             </div>
-                                            <Avatar className='ml-[45%] bg-neutral-300'>{selectedImage && <img src={URL.createObjectURL(selectedImage)} alt="Preview" />}</Avatar>
+                                            <Avatar className="ml-[45%] bg-neutral-300">
+                                                {selectedImage && <img src={URL.createObjectURL(selectedImage)} alt="Preview" />}
+                                            </Avatar>                                        
                                         </div>
                                     </DialogContent>
                                 </Dialog>
