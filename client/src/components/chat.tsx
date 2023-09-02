@@ -86,13 +86,6 @@ export function Chat() {
         setSelectedLang(event.target.value)
     }
 
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        setSelectedImage(file);
-    };
-    
-    
-
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             handleInput() 
@@ -148,7 +141,7 @@ export function Chat() {
                                                 <Label htmlFor="avatar" className="text-right">
                                                     Avatar:
                                                 </Label>
-                                                <Input type="file" name="avatar" className='w-[250px] cursor-pointer' accept="image/*" onChange={handleImageChange} />
+                                                <Input type="file" name="avatar" className='w-[250px] cursor-pointer' accept="image/*" />
                                             </div>
                                             <Avatar className='ml-[45%] bg-neutral-300'>{selectedImage && <img src={URL.createObjectURL(selectedImage)} alt="Preview" />}</Avatar>
                                         </div>
