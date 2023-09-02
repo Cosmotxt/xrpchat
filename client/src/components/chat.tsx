@@ -39,9 +39,7 @@ export function Chat() {
         }
         
         messageId++
-        console.log(messageId)
         const newMessage = { sender: 'you', content: input, style: 'flex gap-2 items-start text-slate-600 text-sm justify-end mt-8', messageId: messageId};
-        console.log(newMessage.messageId)
         setMessages([...messages, newMessage]);
         
         const requestBody = { input: input, id: userId, lang: selectedLang };
@@ -49,7 +47,7 @@ export function Chat() {
         try {
             setIsLoading(true)
             setTipsView('flex hidden')
-            const response = await fetch('https://veguinha-backend.vercel.app', {
+            const response = await fetch('https://veguinha-backend.vercel.app/predict', {
                 method: 'POST',
                 headers: { 'Content-Type':'application/json' },
                 body: JSON.stringify(requestBody)
