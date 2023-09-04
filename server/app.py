@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 from bot import get_response
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app, resources={r'/predict': {'origins':'https://vegacrypto.xyz'}})
 
 @app.route('/')
 def message():
@@ -17,8 +19,9 @@ def chat():
         return jsonify({"error": bot_response["error"]})
 
     else:
-        response = {'result': bot_response['result'], 'source':bot_response['source'] }
+        response = {'result': bot_response['result'], 'source': bot_response['source']}
         return jsonify(response)
+
 
 if __name__ == '__main__':
     app.run()
