@@ -3,7 +3,8 @@ gunicorn
 uvicorn
 langchain
 Flask
-Flask_Cors
+flask
+flask_cors
 pinecone_client
 openai
 python-dotenv

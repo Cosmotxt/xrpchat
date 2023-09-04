@@ -1,13 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from bot import get_response
-from flask_cors import CORS
-import os
-from dotenv import load_dotenv
-
 app = Flask(__name__)
-CORS(app)
-
-myport =  int(os.environ.get("PORT", 5000))
 
 @app.route('/')
 def message():
@@ -28,4 +21,4 @@ def chat():
         return jsonify(response)
 
 if __name__ == '__main__':
-    app.run(port=myport)
+    app.run()
