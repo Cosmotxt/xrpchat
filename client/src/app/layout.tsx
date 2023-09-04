@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Veguinha',
-  description: 'Veguinha bot',
+  description: 'O chatbot que tira suas dúvidas sobre o Real Digital!',
 }
 
 export default function RootLayout({
