@@ -63,7 +63,8 @@ export function Chat() {
             const response = await fetch('https://veguinha-backend.vercel.app/predict', {
                 method: 'POST',
                 headers: { 'Content-Type':'application/json' },
-                body: JSON.stringify(requestBody)
+                body: JSON.stringify(requestBody),
+                mode:'cors'
             });
 
             if(!response.ok) {
