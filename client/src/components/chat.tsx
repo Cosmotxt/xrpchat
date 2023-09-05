@@ -60,7 +60,7 @@ export function Chat() {
         try {
             setIsLoading(true)
             setTipsView('flex hidden')
-            const response = await fetch('https://veguinha-backend.vercel.app/predict', {
+            const response = await fetch('https://veguinha-backend.rj.r.appspot.com/predict', {
                 method: 'POST',
                 headers: { 'Content-Type':'application/json' },
                 body: JSON.stringify(requestBody),

@@ -1,8 +1,7 @@
-tiktoken
 gunicorn
 uvicorn
 langchain
-Flask
+tiktoken
 flask
 flask_cors
 pinecone_client
