@@ -73,7 +73,7 @@ export function Chat() {
             if('error' in data) {
                 messageId++
                 let erro =  data.error;
-                let newContent = erro.split('LLM output: ')[1]
+                let newContent = (erro.split('LLM output: ')[1]).json().action_input
                 console.log(newContent)
                 const newResponse = { sender: 'veguinha', content: newContent, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8', loadingStyle: 'flex hidden' };
                 setMessages([...messages, newMessage, newResponse]);
