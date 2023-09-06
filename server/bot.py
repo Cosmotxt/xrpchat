@@ -168,7 +168,7 @@ def get_response(user_id, text, lang):
         response = {'result': translator(output, lang), 'source': sources(text)}
         return response
     except Exception as e:
-        return {"error": str(e)}
+        return {"error": dict(e)}
     
     
 
