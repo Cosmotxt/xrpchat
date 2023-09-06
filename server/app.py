@@ -9,7 +9,7 @@ def message():
     return "Hey there. Veguinha's house"
 
 @app.route('/predict', methods=['POST'])
-def chat():
+def chat(): 
     data = request.json
     user_input = data.get('input')
     user_id = data.get('id')
