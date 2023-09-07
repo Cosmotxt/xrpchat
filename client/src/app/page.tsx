@@ -2,9 +2,9 @@ import { Chat } from "../components/chat";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "../components/ui/hover-card";
 export default function Home() {
   return (
-    <div className="flex min-h-screen bg-slate-60 items-center justify-center" style={{background: '#Eeeeee', display:'flex', flexDirection: 'column', gap: '20px'}}>
+    <div className="flex flex-col gap-[20px] min-h-screen bg-neutral-200 items-center justify-center">
       <Chat />
-      <div className="flex">
+      <div className="flex max-md:hidden">
         <HoverCard>
           <HoverCardTrigger className="cursor-pointer">Quer aprender mais sobre o Real Digital?</HoverCardTrigger>
           <HoverCardContent>

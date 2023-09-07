@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from bot import get_response
 from flask_cors import CORS
 app = Flask(__name__)
-CORS(app, resources={r'/predict': {'origins':'https://vegacrypto.xyz'}})
+CORS(app=app, origins='https://vegacrypto.xyz')
 
 @app.route('/')
 def message():
