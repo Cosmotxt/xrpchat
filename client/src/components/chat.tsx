@@ -30,7 +30,7 @@ export function Chat() {
     const [messages, setMessages] = useState<any[]>([])
     const messageEndRef = useRef<HTMLDivElement>(null)
     const [userId, setUserId] =  useState(0)
-    const [tipsView, setTipsView] = useState('flex flex-wrap justify-center max-w-[100%] gap-10 mt-48 absolute max-md:flex-nowrap max-md:flex-col max-md:mt-10')
+    const [tipsView, setTipsView] = useState('flex flex-wrap justify-center max-w-[100%] gap-10 mt-48 absolute max-lg:flex-nowrap max-lg:flex-col max-lg:mt-10')
 
     const onDrop = (acceptedFiles: File[]) => {
         if (acceptedFiles.length > 0) {
@@ -123,12 +123,12 @@ export function Chat() {
 
     return (
         <div>
-            <Card className="flex flex-col justify-between w-[80vh] rounded-[20px] max-md:w-screen max-md:h-screen max-md:rounded-none ">
-                <CardHeader className="w-full h-[100px] pt-[15px] bg-neutral-900 rounded-t-[20px] max-md:rounded-none ">
+            <Card className="flex flex-col justify-between w-[80vh] rounded-[20px] max-lg:w-screen max-lg:h-screen max-lg:rounded-none ">
+                <CardHeader className="w-full h-[100px] pt-[15px] bg-neutral-900 rounded-t-[20px] max-lg:rounded-none max-lg:h-[80px]">
                     <div>
                         <div className='flex items-center justify-between mx-auto my-0 max-w-[90%]'>
-                            <img src="./logo.png" alt="" className='max-w-[8vh] max-md:mx-auto max-md:hidden'/>
-                            <div className='flex items-center justify-between w-[280px] max-md:mx-auto max-md:my-0'>
+                            <img src="./logo.png" alt="" className='max-w-[8vh] max-lg:mx-auto max-lg:hidden'/>
+                            <div className='flex items-center justify-between w-[280px] max-lg:mx-auto max-lg:my-0'>
                                 <div className="">
                                     <Dialog>
                                         <DialogTrigger asChild className='bg-neutral-900 text-neutral-200'>
@@ -178,9 +178,9 @@ export function Chat() {
                     </div>
                 </CardHeader>
                 <CardContent>              
-                    <ScrollArea className="h-[70vh] w-full pr-4 max-md:h-[74vh]" >
+                    <ScrollArea className="h-[70vh] w-full pr-4 max-lg:h-[74vh]" >
                         <div className={tipsView}>
-                            <Card className="w-[250px] bg-transparent text-gray-800 border-gray-300 rounded-[1.5rem] max-md:max-w-full max-md:w-[100vw]">
+                            <Card className="w-[250px] bg-transparent text-gray-800 border-gray-300 rounded-[1.5rem] max-lg:max-w-full max-lg:w-[100vw]">
                                 <CardContent className="flex text-center flex-col gap-2 px-6 py-3 text-sm cursor-pointer" onClick={()=>{
                                     setInput('O que é o Real Digital e quais suas caracteristicas?')
                                     setTipsView('flex hidden')
@@ -190,7 +190,7 @@ export function Chat() {
                                     </div>
                                 </CardContent>
                             </Card>
-                            <Card className="w-[250px] bg-transparent text-gray-800 border-gray-300 rounded-[1.5rem] max-md:max-w-full max-md:w-[100vw]">
+                            <Card className="w-[250px] bg-transparent text-gray-800 border-gray-300 rounded-[1.5rem] max-lg:max-w-full max-lg:w-[100vw]">
                                 <CardContent className="flex w-full text-center flex-col gap-2 px-6 py-3 text-sm cursor-pointer" onClick={()=>{
                                     setInput('O Real Digital é uma criptomoeda?')
                                     setTipsView('flex hidden')
@@ -200,7 +200,7 @@ export function Chat() {
                                     </div>
                                 </CardContent>
                             </Card>
-                            <Card className="w-[250px] bg-transparent text-gray-800 border-gray-300 rounded-[1.5rem] max-md:hidden">
+                            <Card className="w-[250px] bg-transparent text-gray-800 border-gray-300 rounded-[1.5rem] max-lg:hidden">
                                 <CardContent className="flex w-full text-center flex-col gap-2 px-6 py-3 text-sm cursor-pointer" onClick={()=>{
                                     setInput('Como irá funciona o Real Digital?')
                                     setTipsView('flex hidden')
@@ -210,7 +210,7 @@ export function Chat() {
                                     </div>
                                 </CardContent>
                             </Card>
-                            <Card className="w-[250px] bg-transparent text-gray-800 border-gray-300 rounded-[1.5rem] max-md:hidden">
+                            <Card className="w-[250px] bg-transparent text-gray-800 border-gray-300 rounded-[1.5rem] max-lg:hidden">
                                 <CardContent className="flex w-full text-center flex-col gap-2 px-6 py-3 text-sm cursor-pointer" onClick={()=>{
                                     setInput('Qual a diferença do Real Digital para o pix?')
                                     setTipsView('flex hidden')
@@ -220,7 +220,7 @@ export function Chat() {
                                     </div>
                                 </CardContent>
                             </Card>
-                            <Card className="w-[250px] bg-transparent text-gray-800 border-gray-300 rounded-[1.5rem] max-md:max-w-full max-md:w-[100vw]" >
+                            <Card className="w-[250px] bg-transparent text-gray-800 border-gray-300 rounded-[1.5rem] max-lg:max-w-full max-lg:w-[100vw]" >
                                 <CardContent className="flex w-full text-center flex-col gap-2 px-6 py-3 text-sm cursor-pointer" onClick={()=>{
                                     setTipsView('flex hidden')
                                     setInput('Quais os principais benefícios do Real Digital?')
@@ -230,7 +230,7 @@ export function Chat() {
                                     </div>
                                 </CardContent>
                             </Card>
-                            <Card className="w-[250px] bg-transparent text-gray-800 border-gray-300 rounded-[1.5rem] max-md:max-w-full max-md:w-[100vw]">
+                            <Card className="w-[250px] bg-transparent text-gray-800 border-gray-300 rounded-[1.5rem] max-lg:max-w-full max-lg:w-[100vw]">
                                 <CardContent className="flex w-full text-center flex-col gap-2 px-6 py-3 text-sm cursor-pointer" onClick={()=>{
                                     setInput('Quais os riscos do Real Digital?')
                                     setTipsView('flex hidden')
@@ -249,7 +249,7 @@ export function Chat() {
                                
                                 {message.sender === 'you' && (
                                     <div className={message.style}>
-                                        <Card className="max-w-[60%] bg-zinc-800 text-zinc-200 rounded-[1.5rem]">
+                                        <Card className="max-w-[85%] bg-zinc-800 text-zinc-200 rounded-[1.5rem]">
                                             <CardContent className="flex flex-wrap max-w-[100%] px-6 py-3 text-sm" >
                                                 {message.content}
                                             </CardContent>
@@ -270,7 +270,7 @@ export function Chat() {
                                         <div className='flex items-start space-x-4 mt-[1.5rem]'>
                                             <Skeleton className="h-10 w-10 rounded-full" />
                                             <div className="space-y-2">
-                                                <Skeleton className="h-[15vh] w-[40vh] rounded-[1.5rem] max-md:h-[20vh] max-md:w-[50vw]" />
+                                                <Skeleton className="h-[15vh] w-[40vh] rounded-[1.5rem] max-lg:h-[20vh] max-lg:w-[50vw]" />
                                             </div>
                                         </div>
                                     )
@@ -284,7 +284,7 @@ export function Chat() {
                                             <AvatarFallback>V</AvatarFallback>
                                             <AvatarImage src='https://media.licdn.com/dms/image/C4E0BAQGyYeVLJFb-IA/company-logo_200_200/0/1641913708341?e=1700092800&v=beta&t=R3cAjt11_Y54RLcZSHnSthEtfB33EXlAT2hy3zXArvU'></AvatarImage>
                                         </Avatar>
-                                        <Card className="max-w-[60%] bg-transparent text-zinc-800 rounded-[1.5rem]">
+                                        <Card className="max-w-[85%] bg-transparent text-zinc-800 rounded-[1.5rem]">
                                             <CardContent className="flex flex-wrap max-w-[100%] flex-col gap-2 px-6 py-4 text-sm">
                                                 <MarkdownRenderer content={message.content}/>
                                             </CardContent>
