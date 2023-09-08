@@ -155,12 +155,11 @@ def get_response(user_id, text, lang):
     conversation_history = user_conversations[user_id]
 
     try:
-        q = translator(text, 'en')
         # Append user input to conversation history
-        conversation_history.append(q)
+        conversation_history.append(text)
 
         # Generate response using the conversation history
-        output = agent(chat_prompt.format_prompt(input=q).to_string())['output']
+        output = agent(chat_prompt.format_prompt(input=text).to_string())['output']
 
         # Append agent response to conversation history
         conversation_history.append(output)
@@ -171,5 +170,3 @@ def get_response(user_id, text, lang):
         return {"error": str(e)}
     
     
-get_response(1, 'O que é o drex?', 'pt')
-
