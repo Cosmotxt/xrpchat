@@ -27,7 +27,7 @@ function getRandomInt(min: number, max: number): number {
 
 let messageId = 0
 
-export function Chat() {
+export default function Chat() {
     const [isLoginOpen, setIsLoginOpen] = useState(true) 
     const [isLoading, setIsLoading] = useState(false)
     const [selectedImage, setSelectedImage] = useState<File | null>(null)
