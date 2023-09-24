@@ -9,7 +9,6 @@ import { Input } from "../src/ui/input"
 import { useState, useEffect, useRef } from 'react'
 import { ScrollArea } from "../src/ui/scroll-area"
 import { Skeleton } from "../src/ui/skeleton"
-import MarkdownRenderer from "./markdownrender"
 import { Label } from '@radix-ui/react-label'
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from '../src/ui/dialog'
 import { useDropzone } from 'react-dropzone'
@@ -297,7 +296,7 @@ export default function Chat() {
                                         </Avatar>
                                         <Card className="max-w-[85%] bg-transparent text-zinc-800 rounded-[1.5rem]">
                                             <CardContent className="flex flex-wrap max-w-[100%] flex-col gap-2 px-6 py-4 text-sm">
-                                                <MarkdownRenderer content={message.content}/>
+                                                {message.content}
                                             </CardContent>
                                         </Card>
                                         

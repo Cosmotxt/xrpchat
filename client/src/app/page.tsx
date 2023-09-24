@@ -1,6 +1,6 @@
 'use client'
 import { AuthProvider } from "../../context/authContext";
-import { Chat } from "../../pages/chat";
+import Chat from "../../pages/chat";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "../ui/hover-card";
 
 export default function Home() {
