@@ -34,6 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
+    "./src/ui/**/*.tsx",
     "public/src/app/api/chat/chatbot.js",
     "../api/static/next/types/**/*.ts",
     "/home/renisonmoita/Downloads/veguinha/client/public/src/components/ui/toast.tsx"

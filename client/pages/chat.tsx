@@ -9,14 +9,11 @@ import { Input } from "../src/ui/input"
 import { useState, useEffect, useRef } from 'react'
 import { ScrollArea } from "../src/ui/scroll-area"
 import { Skeleton } from "../src/ui/skeleton"
-import { Label } from '@radix-ui/react-label'
-import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from '../src/ui/dialog'
 import { useDropzone } from 'react-dropzone'
-import Auth from './popup'
 import Login from './login'
 import Register from './register'
 import { useAuth } from '../context/authContext'
-import { set } from 'react-hook-form'
+import MarkdownDisplay from '../src/ui/markdown-display'
 
 function getRandomInt(min: number, max: number): number {
     min = Math.ceil(min)
@@ -250,8 +247,6 @@ export default function Chat() {
                             </Card>
                         </div>
 
- 
-
                         {messages.map((message, index) => (
                             <div key={index}>
                                
@@ -286,8 +281,6 @@ export default function Chat() {
                                     )
                                 )}
 
-
-
                                 {message.sender == 'veguinha' && (
                                     <div key={index} className={message.style}>
                                         <Avatar>
@@ -296,7 +289,7 @@ export default function Chat() {
                                         </Avatar>
                                         <Card className="max-w-[85%] bg-transparent text-zinc-800 rounded-[1.5rem]">
                                             <CardContent className="flex flex-wrap max-w-[100%] flex-col gap-2 px-6 py-4 text-sm">
-                                                {message.content}
+                                                <MarkdownDisplay content={message.content} />
                                             </CardContent>
                                         </Card>
                                         
