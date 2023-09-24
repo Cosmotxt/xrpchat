@@ -2,7 +2,6 @@
 import { Input } from '../src/ui/input'
 import { Card } from '../src/ui/card'
 import { Button } from '../src/ui/button'
-import './chat_style.css'
 import 'tailwindcss/tailwind.css'
 import { useEffect, useState } from 'react'
 import { useAuth } from '../context/authContext';

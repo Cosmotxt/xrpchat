@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import './chat_style.css'
 import { Avatar, AvatarFallback, AvatarImage } from "../src/ui/avatar"
 import { Button } from "../src/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../src/ui/card"
