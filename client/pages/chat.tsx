@@ -1,18 +1,22 @@
 'use client'
 
 import './chat_style.css'
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
-import { Button } from "./ui/button"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "./ui/card"
-import { Input } from "./ui/input"
+import { Avatar, AvatarFallback, AvatarImage } from "../src/ui/avatar"
+import { Button } from "../src/ui/button"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../src/ui/card"
+import { Input } from "../src/ui/input"
 import { useState, useEffect, useRef } from 'react'
-import { ScrollArea } from "./ui/scroll-area"
-import { Skeleton } from "./ui/skeleton"
+import { ScrollArea } from "../src/ui/scroll-area"
+import { Skeleton } from "../src/ui/skeleton"
 import MarkdownRenderer from "./markdownrender"
 import { Label } from '@radix-ui/react-label'
-import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from './ui/dialog'
+import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from '../src/ui/dialog'
 import { useDropzone } from 'react-dropzone'
-
+import Auth from './popup'
+import Login from './login'
+import Register from './register'
+import { useAuth } from '../context/authContext'
+import { set } from 'react-hook-form'
 
 function getRandomInt(min: number, max: number): number {
     min = Math.ceil(min)
@@ -23,6 +27,7 @@ function getRandomInt(min: number, max: number): number {
 let messageId = 0
 
 export function Chat() {
+    const [isLoginOpen, setIsLoginOpen] = useState(true) 
     const [isLoading, setIsLoading] = useState(false)
     const [selectedImage, setSelectedImage] = useState<File | null>(null)
     const [input, setInput] = useState('')
@@ -31,18 +36,29 @@ export function Chat() {
     const messageEndRef = useRef<HTMLDivElement>(null)
     const [userId, setUserId] =  useState(0)
     const [tipsView, setTipsView] = useState('flex flex-wrap justify-center max-w-[100%] gap-10 mt-48 absolute max-lg:flex-nowrap max-lg:flex-col max-lg:mt-10')
+    const [tipsResponse, setTipsResponse] = useState('');
+    const { successfulLogin, logMessage } = useAuth();
+    const [loginMessage, setLoginMessage] = useState('')
+    const [showLoginMessage, setShowLoginMessage] = useState(false);
 
     const onDrop = (acceptedFiles: File[]) => {
         if (acceptedFiles.length > 0) {
           const file = acceptedFiles[0]
           setSelectedImage(file)
         }
-      }
+    }
 
     const { getRootProps, getInputProps } = useDropzone({
         onDrop,
     })
-    
+
+    const handleLogin = () => {
+        if(!isLoginOpen) {
+            setIsLoginOpen(true)
+        }else {
+            setIsLoginOpen(false)
+        }
+    }    
     
     const handleInput = async () => {
         setInput('')
@@ -69,6 +85,7 @@ export function Chat() {
             if(!response.ok) {
                 throw new Error(`request failed with status ${response.status}`)
             }
+
             let data = await response.json()
             if('error' in data) {
                 messageId++
@@ -105,7 +122,6 @@ export function Chat() {
         }
     }
 
-
     useEffect(() => {
         setUserId(getRandomInt(1, 1000000))
     },[])
@@ -121,6 +137,23 @@ export function Chat() {
         handleInput()
     }, [tipsView])
 
+    useEffect(() => {
+        if(successfulLogin) {
+            setLoginMessage(logMessage)
+            setShowLoginMessage(true)
+        }
+    }, [successfulLogin])
+
+    useEffect(() => {
+        if (showLoginMessage) {
+            const timer = setTimeout(() => {
+            setShowLoginMessage(false);
+        }, 2000);
+      
+          return () => clearTimeout(timer);
+        }
+    }, [showLoginMessage])
+
     return (
         <div>
             <Card className="flex flex-col justify-between w-[80vh] rounded-[20px] max-lg:w-screen max-lg:h-screen max-lg:rounded-none ">
@@ -129,42 +162,17 @@ export function Chat() {
                         <div className='flex items-center justify-between mx-auto my-0 max-w-[90%]'>
                             <img src="./logo.png" alt="" className='max-w-[8vh] max-lg:mx-auto max-lg:hidden'/>
                             <div className='flex items-center justify-between w-[280px] max-lg:mx-auto max-lg:my-0'>
-                                <div className="">
-                                    <Dialog>
-                                        <DialogTrigger asChild className='bg-neutral-900 text-neutral-200'>
-                                            <Button variant="outline">Configurações</Button>
-                                        </DialogTrigger>
-                                        <DialogContent className="max-w-[450px] max-h-[225px] ">
-                                            <div className="grid gap-4 py-4">
-                                                <div className="grid grid-cols-4 items-center gap-4">
-                                                    <Label htmlFor="lang" className="text-right w-full">
-                                                        Idioma do bot:
-                                                    </Label>
-                                                    <div className='flex gap-2'>
-                                                        <select value={selectedLang} onChange={handleConfig} className='bg-slate-60 w-40 rounded-lg cursor-pointer from-neutral-300 py-1 pl-3 pr-8'>
-                                                            <option value="pt">Portuguese</option>
-                                                            <option value="es">Spanish</option>
-                                                            <option value="en">English</option>
-                                                            <option value="fr">French</option>
-                                                            <option value="ko">Korean</option>
-                                                            <option value="de">German</option>
-                                                            <option value="ru">Russian</option>
-                                                            <option value="ja">Japanese</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div {...getRootProps()} className="grid grid-cols-4 items-center gap-4">
-                                                    <Label htmlFor="avatar" className="text-right">
-                                                        Avatar:
-                                                    </Label>
-                                                    <Input type="file" name="avatar" accept='image/*' className="w-[250px] cursor-pointer" />
-                                                </div>
-                                                <Avatar className="ml-[45%] bg-neutral-300">
-                                                    {selectedImage && <img src={URL.createObjectURL(selectedImage)} alt="Preview" />}
-                                                </Avatar>                                        
-                                            </div>
-                                        </DialogContent>
-                                    </Dialog>
+                                <div className='flex gap-2'>
+                                    <select value={selectedLang} onChange={handleConfig} className='bg-slate-60 w-40 rounded-lg cursor-pointer from-neutral-300 py-1 pl-3 pr-8'>
+                                        <option value="pt">Portuguese</option>
+                                        <option value="es">Spanish</option>
+                                        <option value="en">English</option>
+                                        <option value="fr">French</option>
+                                        <option value="ko">Korean</option>
+                                        <option value="de">German</option>
+                                        <option value="ru">Russian</option>
+                                        <option value="ja">Japanese</option>
+                                    </select>
                                 </div>
                                 <div className=''>
                                     <a href="https://www.instagram.com/vegacrypto/" target='_blank'><svg xmlns="http://www.w3.org/2000/svg" height="2.5em" fill='#dc2c2a' viewBox="0 0 448 512"><style></style><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
@@ -270,7 +278,9 @@ export function Chat() {
                                         <div className='flex items-start space-x-4 mt-[1.5rem]'>
                                             <Skeleton className="h-10 w-10 rounded-full" />
                                             <div className="space-y-2">
-                                                <Skeleton className="h-[15vh] w-[40vh] rounded-[1.5rem] max-lg:h-[20vh] max-lg:w-[50vw]" />
+                                                <Skeleton className="px-6 py-3 text-sm text-zinc-800 rounded-[1.5rem] max-lg:h-[20vh] max-lg:w-[50vw]">
+                                                    Digitando...
+                                                </Skeleton>
                                             </div>
                                         </div>
                                     )
@@ -323,9 +333,24 @@ export function Chat() {
                             <Button type="submit" className="bg-zinc-800" onClick={handleInput}> <svg xmlns="http://www.w3.org/2000/svg" height="1.3em" fill='#dcdcdc' viewBox="0 0 512 512"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg> </Button>
                         </div>
                     )}
-                    
                 </CardFooter>
             </Card>
+
+            {showLoginMessage && (
+                <Card className='absolute top-6 left-[50%] translate-x-[-50%] p-[20px]'>
+                    {loginMessage}
+                </Card>
+            )}
+
+            {messageId > 5 && (
+                <>
+                    {isLoginOpen ? (
+                        <Register onLoginClick={handleLogin} />
+                    ) : (
+                        <Login onRegisterClick={handleLogin} />
+                    )}
+                </>
+            )}
         </div>
     )
 }
