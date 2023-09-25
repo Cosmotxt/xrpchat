@@ -128,7 +128,7 @@ export default function Chat() {
         try {
             setIsLoading(true)
             setTipsView('flex hidden')
-            const response = await fetch('https://veguinha-backend.rj.r.appspot.com/predict', {
+            const response = await fetch('https://veguinha-backend.appspot.com/predict', {
                 method: 'POST',
                 headers: { 'Content-Type':'application/json' },
                 body: JSON.stringify(requestBody),
@@ -390,7 +390,7 @@ export default function Chat() {
                 </Card>
             )}
 
-            {messageId > 1 && (
+            {messageId > 2 && (
                 <>
                     {isLoginOpen ? (
                         <Register onLoginClick={handleLogin} />
