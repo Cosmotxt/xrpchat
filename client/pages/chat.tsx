@@ -20,7 +20,7 @@ function getRandomInt(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-let messageId = 0
+let messageId = 1
 
 export default function Chat() {
     const [isLoginOpen, setIsLoginOpen] = useState(true) 
@@ -62,11 +62,11 @@ export default function Chat() {
             return
         }
         
-        messageId++
         const newMessage = { sender: 'you', content: input, style: 'flex gap-2 items-start text-slate-600 text-sm justify-end mt-8', messageId: messageId}
         setMessages([...messages, newMessage])
 
         if(messageId === 1) {
+            messageId++
             if(input == 'O que é o Real Digital e quais suas caracteristicas?') {
                 const botResponse = 'O Real Digital é uma moeda digital que está sendo desenvolvida pelo Banco Central do Brasil. É uma representação digital da moeda brasileira, o real, e estará disponível em uma plataforma eletrônica controlada pelo banco central.\nAqui estão algumas características importantes do Digital Real:\n1. CBDC: Digital Real é um tipo de CBDC, o que significa que é uma moeda digital emitida por um banco central.Ele fornece confiabilidade, estabilidade e previsibilidade que vêm com regulamentação, semelhante à moeda física.\n2. Tecnologia do Ledger distribuída (DLT): o Digital Real é construído com a tecnologia Distributed Ledger, especificamente uma rede descentralizada.Isso significa que as informações não são armazenadas em um único computador, mas em uma rede de computadores que verificam e fornecem acesso simultaneamente às informações, tornando o sistema mais seguro.\n3. Contratos inteligentes: o Digital Real permite o uso de contratos inteligentes, que são contratos auto-executados com os termos do contrato diretamente escritos em linhas de código.Os contratos inteligentes permitem transações automatizadas e seguras, eliminando a necessidade de intermediários e reduzindo os custos.\n4. Redução dos custos: Um dos benefícios do Real Digital é o potencial de redução de custos.Os contratos inteligentes e o uso de plataformas eletrônicas podem automatizar e simplificar as transações, tornando -as mais eficientes e mais baratas.\n5. Acesso aos serviços financeiros tradicionais: o Digital Real pretende facilitar o acesso aos serviços financeiros tradicionais e permitir o desenvolvimento de novos modelos de negócios na plataforma DLT gerenciada pelo banco central.Isso pode potencialmente expandir a inclusão financeira e abrir novas oportunidades para indivíduos e empresas.\nÉ importante observar que o Digital Real ainda está na fase de desenvolvimento, e sua implementação e impacto completos na economia ainda não foram completamente determinados.'
                 
@@ -74,7 +74,7 @@ export default function Chat() {
                     const newResponse = { sender: 'veguinha', content: botResponse, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8', loadingStyle: 'flex hidden' }
                     setMessages([...messages, newMessage, newResponse])
                 }, 1500);
-                messageId++
+                return
             } 
             if(input == 'O Real Digital é uma criptomoeda?') {
                 const botResponse = 'meua migo, o Real Digital não é uma criptomoeda, é uma moeda digital emitida pelo Banco Central do Brasil, que é uma instituição governamental. O Real Digital é um tipo de CBDC, o que significa que é uma moeda digital emitida por um banco central. Ele fornece confiabilidade, estabilidade e previsibilidade que vêm com regulamentação, semelhante à moeda física.'
@@ -83,7 +83,7 @@ export default function Chat() {
                     const newResponse = { sender: 'veguinha', content: botResponse, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8', loadingStyle: 'flex hidden' }
                     setMessages([...messages, newMessage, newResponse])
                 }, 1500);
-                messageId++
+                return
             }
             if(input == 'Como irá funcionar o Real Digital?') {
                 const botResponse = 'meua migo, o Real Digital não é uma criptomoeda, é uma moeda digital emitida pelo Banco Central do Brasil, que é uma instituição governamental. O Real Digital é um tipo de CBDC, o que significa que é uma moeda digital emitida por um banco central. Ele fornece confiabilidade, estabilidade e previsibilidade que vêm com regulamentação, semelhante à moeda física.'
@@ -92,7 +92,7 @@ export default function Chat() {
                     const newResponse = { sender: 'veguinha', content: botResponse, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8', loadingStyle: 'flex hidden' }
                     setMessages([...messages, newMessage, newResponse])
                 }, 1500);
-                messageId++
+                return
             }
             if(input == 'Qual a diferença do Real Digital para o pix?') {
                 const botResponse = 'meua migo, o Real Digital não é uma criptomoeda, é uma moeda digital emitida pelo Banco Central do Brasil, que é uma instituição governamental. O Real Digital é um tipo de CBDC, o que significa que é uma moeda digital emitida por um banco central. Ele fornece confiabilidade, estabilidade e previsibilidade que vêm com regulamentação, semelhante à moeda física.'
@@ -101,7 +101,7 @@ export default function Chat() {
                     const newResponse = { sender: 'veguinha', content: botResponse, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8', loadingStyle: 'flex hidden' }
                     setMessages([...messages, newMessage, newResponse])
                 }, 1500);
-                messageId++
+                return
             }
             if(input == 'Quais os principais benefícios do Real Digital?') {
                 const botResponse = 'meua migo, o Real Digital não é uma criptomoeda, é uma moeda digital emitida pelo Banco Central do Brasil, que é uma instituição governamental. O Real Digital é um tipo de CBDC, o que significa que é uma moeda digital emitida por um banco central. Ele fornece confiabilidade, estabilidade e previsibilidade que vêm com regulamentação, semelhante à moeda física.'
@@ -110,7 +110,7 @@ export default function Chat() {
                     const newResponse = { sender: 'veguinha', content: botResponse, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8', loadingStyle: 'flex hidden' }
                     setMessages([...messages, newMessage, newResponse])
                 }, 1500);
-                messageId++
+                return
             }
             if(input == 'Quais os riscos do Real Digital?') {
                 const botResponse = 'meua migo, o Real Digital não é uma criptomoeda, é uma moeda digital emitida pelo Banco Central do Brasil, que é uma instituição governamental. O Real Digital é um tipo de CBDC, o que significa que é uma moeda digital emitida por um banco central. Ele fornece confiabilidade, estabilidade e previsibilidade que vêm com regulamentação, semelhante à moeda física.'
@@ -119,7 +119,7 @@ export default function Chat() {
                     const newResponse = { sender: 'veguinha', content: botResponse, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8', loadingStyle: 'flex hidden' }
                     setMessages([...messages, newMessage, newResponse])
                 }, 1500);
-                messageId++
+                return
             }
         }
         
