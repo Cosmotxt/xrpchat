@@ -18,7 +18,7 @@
 }
   
 .markdown-content p {
-    @apply text-base my-2;
+    @apply my-2;
 }
 
 .markdown-content ul {
@@ -27,6 +27,10 @@
 
 .markdown-content ol {
     @apply list-decimal my-2 ml-3;
+}
+
+.markdown-content li {
+    @apply my-5 ml-8;
 }
 
 
