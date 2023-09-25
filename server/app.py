@@ -6,13 +6,13 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "https://vegacrypto.xyz"}})
 
 config = {
-    'apiKey': "AIzaSyDLZCQygmgknsHuLoGY8ciEOTmSyVQXDM8",
-    'authDomain': "vegabot-7f89f.firebaseapp.com",
-    'projectId': "vegabot-7f89f",
-    'storageBucket': "vegabot-7f89f.appspot.com",
-    'messagingSenderId': "148345001704",
-    'appId': "1:148345001704:web:9cd41ac9f6f19bde561b5d",
-    'measurementId': "G-94HXXTXCPC",
+    'apiKey': "AIzaSyAZDuSI9RwZlg6SziXPhXjIz30yQAsogMo",
+    'authDomain': "vegabotchatbot.firebaseapp.com",
+    'projectId': "vegabotchatbot",
+    'storageBucket': "vegabotchatbot.appspot.com",
+    'messagingSenderId': "1022370349573",
+    'appId': "1:1022370349573:web:0e0fbd6e8c05a9ffd5526c",
+    'measurementId': "G-3S1Z6E3MHH",
     'databaseURL': ''
 }
 

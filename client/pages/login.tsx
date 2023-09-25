@@ -84,6 +84,7 @@ const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
         setLogCard('hidden')
         setSuccessfulLogin(true)
         setLogMessage('Aproveite!')
+        console.log('Login efetuado com sucesso')
       }
       
       if (!data.success) {
@@ -91,8 +92,10 @@ const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
         const erro = data.error.split(':')[6].split('"')[1]
         if(erro == 'INVALID_PASSWORD') {
           setError('Senha incorreta')
+          console.log('Senha incorreta')
         } else if(erro == 'EMAIL_NOT_FOUND') {
           setError('E-mail não cadastrado')
+          console.log('E-mail não cadastrado')
         }
       }
       
