@@ -1,5 +1,5 @@
 gunicorn
-uvicorn
+Pyrebase4
 langchain
 tiktoken
 flask

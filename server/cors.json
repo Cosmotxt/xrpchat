@@ -1,8 +1,0 @@
-[
-    {
-      "origin": "https://vegacrypto.xyz",
-      "method": ["POST", "GET"],
-      "responseHeader": ["Content-Type"],
-      "maxAgeSeconds": 10600
-    }
-]

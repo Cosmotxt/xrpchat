@@ -72,7 +72,7 @@ const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
     }
   
     try {
-      const response = await fetch('http://127.0.0.1:5000/auth', {
+      const response = await fetch('https://vegachatbot123.rj.r.appspot.com/auth', {
         method: 'POST',
         headers: { 'Content-Type':'application/json' },
         body: JSON.stringify(requestBody),
@@ -115,7 +115,7 @@ const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
         setShowErrorCard(false);
       }, 2000);
   
-      return () => clearTimeout(timer); // Limpe o timer se o componente for desmontado
+      return () => clearTimeout(timer);
     }
   }, [showErrorCard]);
   
