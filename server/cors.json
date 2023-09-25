@@ -1,7 +1,7 @@
 [
     {
       "origin": ["https://vegacrypto.xyz"],
-      "method": ["POST"],
+      "method": ["POST", "GET"],
       "responseHeader": ["Content-Type"]
     }
 ]

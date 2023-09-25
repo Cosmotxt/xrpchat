@@ -32,7 +32,6 @@ export default function Chat() {
     const messageEndRef = useRef<HTMLDivElement>(null)
     const [userId, setUserId] =  useState(0)
     const [tipsView, setTipsView] = useState('flex flex-wrap justify-center max-w-[100%] gap-10 mt-48 absolute max-lg:flex-nowrap max-lg:flex-col max-lg:mt-10')
-    const [tipsResponse, setTipsResponse] = useState('');
     const { successfulLogin, logMessage } = useAuth();
     const [loginMessage, setLoginMessage] = useState('')
     const [showLoginMessage, setShowLoginMessage] = useState(false);
@@ -87,16 +86,40 @@ export default function Chat() {
                 messageId++
             }
             if(input == 'Como irá funcionar o Real Digital?') {
-
+                const botResponse = 'meua migo, o Real Digital não é uma criptomoeda, é uma moeda digital emitida pelo Banco Central do Brasil, que é uma instituição governamental. O Real Digital é um tipo de CBDC, o que significa que é uma moeda digital emitida por um banco central. Ele fornece confiabilidade, estabilidade e previsibilidade que vêm com regulamentação, semelhante à moeda física.'
+                
+                const timer = setTimeout(() => {
+                    const newResponse = { sender: 'veguinha', content: botResponse, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8', loadingStyle: 'flex hidden' }
+                    setMessages([...messages, newMessage, newResponse])
+                }, 1500);
+                messageId++
             }
             if(input == 'Qual a diferença do Real Digital para o pix?') {
-    
+                const botResponse = 'meua migo, o Real Digital não é uma criptomoeda, é uma moeda digital emitida pelo Banco Central do Brasil, que é uma instituição governamental. O Real Digital é um tipo de CBDC, o que significa que é uma moeda digital emitida por um banco central. Ele fornece confiabilidade, estabilidade e previsibilidade que vêm com regulamentação, semelhante à moeda física.'
+                
+                const timer = setTimeout(() => {
+                    const newResponse = { sender: 'veguinha', content: botResponse, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8', loadingStyle: 'flex hidden' }
+                    setMessages([...messages, newMessage, newResponse])
+                }, 1500);
+                messageId++
             }
             if(input == 'Quais os principais benefícios do Real Digital?') {
-    
+                const botResponse = 'meua migo, o Real Digital não é uma criptomoeda, é uma moeda digital emitida pelo Banco Central do Brasil, que é uma instituição governamental. O Real Digital é um tipo de CBDC, o que significa que é uma moeda digital emitida por um banco central. Ele fornece confiabilidade, estabilidade e previsibilidade que vêm com regulamentação, semelhante à moeda física.'
+                
+                const timer = setTimeout(() => {
+                    const newResponse = { sender: 'veguinha', content: botResponse, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8', loadingStyle: 'flex hidden' }
+                    setMessages([...messages, newMessage, newResponse])
+                }, 1500);
+                messageId++
             }
             if(input == 'Quais os riscos do Real Digital?') {
-    
+                const botResponse = 'meua migo, o Real Digital não é uma criptomoeda, é uma moeda digital emitida pelo Banco Central do Brasil, que é uma instituição governamental. O Real Digital é um tipo de CBDC, o que significa que é uma moeda digital emitida por um banco central. Ele fornece confiabilidade, estabilidade e previsibilidade que vêm com regulamentação, semelhante à moeda física.'
+                
+                const timer = setTimeout(() => {
+                    const newResponse = { sender: 'veguinha', content: botResponse, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8', loadingStyle: 'flex hidden' }
+                    setMessages([...messages, newMessage, newResponse])
+                }, 1500);
+                messageId++
             }
         }
         
@@ -367,7 +390,7 @@ export default function Chat() {
                 </Card>
             )}
 
-            {messageId > 5 && (
+            {messageId > 1 && (
                 <>
                     {isLoginOpen ? (
                         <Register onLoginClick={handleLogin} />
