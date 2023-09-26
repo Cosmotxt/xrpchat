@@ -92,6 +92,7 @@ const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
         const erro = data.error.split(':')[6].split('"')[1]
         if(erro == 'INVALID_PASSWORD') {
           setError('Senha incorreta')
+          console.log(erro)
           console.log('Senha incorreta')
         } else if(erro == 'EMAIL_NOT_FOUND') {
           setError('E-mail não cadastrado')
