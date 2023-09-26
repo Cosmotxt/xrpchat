@@ -205,11 +205,11 @@ export default function Chat() {
                             </Card>
                             <Card className="w-[250px] bg-transparent text-gray-800 border-gray-300 rounded-[1.5rem] max-lg:hidden">
                                 <CardContent className="flex w-full text-center flex-col gap-2 px-6 py-3 text-sm cursor-pointer" onClick={()=>{
-                                    setInput('Como irá funciona o Real Digital?')
+                                    setInput('O que é a Vega Crypto?')
                                     setTipsView('flex hidden')
                                 }}>
                                     <div>
-                                        Como irá funcionar o Real Digital?
+                                        O que é a Vega Crypto?
                                     </div>
                                 </CardContent>
                             </Card>
@@ -286,7 +286,7 @@ export default function Chat() {
                                             <AvatarImage src='https://media.licdn.com/dms/image/C4E0BAQGyYeVLJFb-IA/company-logo_200_200/0/1641913708341?e=1700092800&v=beta&t=R3cAjt11_Y54RLcZSHnSthEtfB33EXlAT2hy3zXArvU'></AvatarImage>
                                         </Avatar>
                                         <Card className="max-w-[85%] bg-transparent text-zinc-800 rounded-[1.5rem]">
-                                            <CardContent className="flex flex-wrap max-w-[100%] flex-col gap-2 px-6 py-4 text-sm">
+                                            <CardContent className="flex flex-wrap max-w-[100%] px-6 py-4 text-sm">
                                                 <MarkdownDisplay content={message.content} />
                                             </CardContent>
                                         </Card>
