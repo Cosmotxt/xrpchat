@@ -144,10 +144,64 @@ agent = initialize_agent(
     return_direct=True
 )
 
+tips_responses = {
+    'O que é o Real Digital e quais suas caracteristicas?': 
+    '''O Real Digital é uma moeda digital que está sendo desenvolvida pelo Banco Central do Brasil. É uma representação digital da moeda brasileira, o real, e estará disponível em uma plataforma eletrônica controlada pelo banco central.\n
+    **Aqui estão algumas características importantes do Digital Real:**\n
+    1. CBDC: Digital Real é um tipo de CBDC, o que significa que é uma moeda digital emitida por um banco central.Ele fornece confiabilidade, estabilidade e previsibilidade que vêm com regulamentação, semelhante à moeda física.
+    2. Tecnologia do Ledger distribuída (DLT): o Digital Real é construído com a tecnologia Distributed Ledger, especificamente uma rede descentralizada.Isso significa que as informações não são armazenadas em um único computador, mas em uma rede de computadores que verificam e fornecem acesso simultaneamente às informações, tornando o sistema mais seguro.
+    3. Contratos inteligentes: o Digital Real permite o uso de contratos inteligentes, que são contratos auto-executados com os termos do contrato diretamente escritos em linhas de código.Os contratos inteligentes permitem transações automatizadas e seguras, eliminando a necessidade de intermediários e reduzindo os custos.
+    4. Redução dos custos: Um dos benefícios do Real Digital é o potencial de redução de custos.Os contratos inteligentes e o uso de plataformas eletrônicas podem automatizar e simplificar as transações, tornando-as mais eficientes e mais baratas.
+    5. Acesso aos serviços financeiros tradicionais: o Digital Real pretende facilitar o acesso aos serviços financeiros tradicionais e permitir o desenvolvimento de novos modelos de negócios na plataforma DLT gerenciada pelo banco central.Isso pode potencialmente expandir a inclusão financeira e abrir novas oportunidades para indivíduos e empresas.
+    É importante observar que o Digital Real ainda está na fase de desenvolvimento, e sua implementação e impacto completos na economia ainda não foram completamente determinados.''',
+
+    'O Real Digital é uma criptomoeda?': 
+    '''Não, o Real Digital não é uma criptomoeda. O Real Digital é uma moeda digital emitida pelo Banco Central do Brasil e é regulada pela autoridade monetária. Diferentemente das criptomoedas, o Real Digital não possui a mesma volatilidade de preços e é respaldado pelo Banco Central, oferecendo estabilidade e previsibilidade em seu valor. Além disso, o Real Digital tem o objetivo de facilitar o acesso a serviços financeiros tradicionais e reduzir custos de transação, enquanto as criptomoedas são tipicamente descentralizadas e não são controladas por uma autoridade central.''',
+
+    'Como irá funcionar o Real Digital?':
+    '''Olá! O Real Digital é fundamentado na Tecnologia Distribuída Ledger (DLT), uma rede descentralizada de computadores que realiza a verificação e registro de transações. Essa moeda digital opera em uma plataforma sob controle do banco central, assemelhando-se ao real físico, mas em formato digital. Mantendo a estabilidade e a confiabilidade da moeda nacional, ele substitui as notas físicas e moedas por representações eletrônicas.
+
+    Além de ser usada para transações, o Real Digital também possibilita a implementação de contratos inteligentes. Esses contratos são acordos programáveis que automatizam transações quando certas condições são cumpridas. Em resumo, o Real Digital busca oferecer uma via segura e eficaz para acessar serviços financeiros tradicionais, ao mesmo tempo que facilita a criação de novos modelos de negócios.
+    ''',
+
+    'Qual a diferença do Real Digital para o pix?': 
+    '''Olá! O Real Digital e o Pix representam duas abordagens distintas na modernização do sistema financeiro brasileiro. O Pix é um sistema de pagamentos instantâneos que agiliza a transferência de dinheiro entre contas de forma rápida e segura, disponível 24 horas por dia, 7 dias por semana. Em contrapartida, o Real Digital é uma moeda digital emitida pelo Banco Central do Brasil que digitaliza a representação do Real, convertendo-o em uma forma eletrônica.
+
+    Enquanto o Pix é uma solução de pagamento, o Real Digital é uma representação eletrônica da moeda com o propósito de facilitar transações e o acesso aos serviços financeiros. Ambos compartilham o objetivo geral de modernizar e otimizar o sistema financeiro, mas diferem em suas funções e utilidades específicas. O Pix simplifica as transferências de dinheiro, enquanto o Real Digital traz a moeda para o mundo digital, abrindo portas para novas formas de transações e serviços financeiros.
+    ''',
+
+    'Quais os principais benefícios do Real Digital?': 
+    '''Os principais benefícios do Real Digital incluem:\n
+
+    - Facilitação do acesso a serviços financeiros tradicionais, especialmente para pessoas sem acesso a contas bancárias.
+    - Redução de custos de transação, tornando as transações mais eficientes e econômicas.
+    - Maior segurança e proteção contra fraudes, devido à tecnologia de criptografia utilizada.
+    - Possibilidade de uso de contratos inteligentes, que automatizam e garantem a execução de transações com base em condições pré-definidas.
+    - Potencial para impulsionar a inovação financeira e o desenvolvimento de novos modelos de negócios.
+
+    É importante ressaltar que o Real Digital está em fase de desenvolvimento e sua implementação completa ainda está por vir. Os benefícios mencionados são baseados nas expectativas e nas possibilidades que a moeda digital pode trazer.
+    ''',
+
+    'Quais os riscos do Real Digital?': 
+    '''
+    Os riscos do Real Digital podem incluir:
+
+    - Possíveis vulnerabilidades de segurança que podem ser exploradas por hackers e cibercriminosos.
+    - Desafios técnicos e operacionais, como a escalabilidade da rede e a interoperabilidade com outros sistemas financeiros.
+    - Preocupações relacionadas à privacidade e proteção de dados, uma vez que as transações digitais podem envolver a coleta e o armazenamento de informações pessoais.
+
+    É fundamental que o Banco Central adote medidas robustas de segurança e privacidade para mitigar esses riscos e garantir a confiança dos usuários no Real Digital.
+
+    '''
+}
+
 user_conversations = {}
 
 
-def get_response(user_id, text, lang):
+def get_response(user_id, text, lang, messageId):
+    if messageId == 1:
+        response = tips_responses.get(text)
+        return {'result': translator(response, lang), 'source': sources(text)}
     if user_id not in user_conversations:
         # Initialize conversation history for new user
         user_conversations[user_id] = []
@@ -168,5 +222,6 @@ def get_response(user_id, text, lang):
         return response
     except Exception as e:
         return {"error": str(e)}
+    
     
     
