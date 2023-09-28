@@ -158,6 +158,7 @@ export default function Chat() {
                 let response: string = tips_responses[input];
                 const newResponse = { sender: 'vegabot', content: response, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8' }
                 setMessages([...messages, newMessage, newResponse])
+                return
             } else {
                 
             }
