@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 gunicorn
 Pyrebase4
 langchain
@@ -10,3 +11,17 @@ python-dotenv
 pydantic==1.10.11
 langdetect 
 googletrans==4.0.0-rc1
+=======
+gunicorn
+Pyrebase4
+langchain
+tiktoken
+flask
+flask_cors
+pinecone_client
+openai
+python-dotenv
+pydantic==1.10.11
+langdetect 
+googletrans==4.0.0-rc1
+>>>>>>> 712be936 (commit)
