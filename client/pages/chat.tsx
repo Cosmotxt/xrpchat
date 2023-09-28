@@ -155,9 +155,11 @@ export default function Chat() {
         if (messageId === 1) {
             if (tips_responses.hasOwnProperty(input)) {
                 messageId++
-                let response: string = tips_responses[input];
-                const newResponse = { sender: 'vegabot', content: response, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8' }
-                setMessages([...messages, newMessage, newResponse])
+                const timer = setTimeout(() => {
+                    let response: string = tips_responses[input];
+                    const newResponse = { sender: 'vegabot', content: response, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8' }
+                    setMessages([...messages, newMessage, newResponse])
+                }, 3000);
                 return
             } else {
                 
