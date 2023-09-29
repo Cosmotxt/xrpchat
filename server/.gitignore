@@ -1,3 +1,5 @@
-/__pycache__
-*.vercel
-*.env
+__pycache__
+.vercel
+.env
+.gcloudignore
+.gitattributes
