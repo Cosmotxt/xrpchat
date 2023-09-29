@@ -22,11 +22,11 @@
 }
 
 .markdown-content ul {
-    @apply list-disc my-2 ml-3;
+    @apply list-disc my-[2vw] ml-[1.5vw];
 }
 
 .markdown-content ol {
-    @apply list-decimal my-2 ml-3;
+    @apply list-decimal my-[2vw] ml-[1.5vw];
 }
 
 .markdown-content li {

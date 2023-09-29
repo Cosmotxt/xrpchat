@@ -1,53 +1,18 @@
-<<<<<<< HEAD
 'use client'
 import { AuthProvider } from "../../context/authContext";
 import Chat from "../../pages/chat";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "../ui/hover-card";
+import Image from 'next/image'
 
 export default function Home() {
   return (
     <AuthProvider>
-      <div className="flex flex-col gap-[20px] min-h-screen bg-neutral-200 items-center justify-center">
+      <div className="flex flex-col min-h-screen bg-[#111112] items-center relative justify-center">
         <Chat />
-
-        <div className="flex max-md:hidden">
-          <HoverCard>
-            <HoverCardTrigger className="cursor-pointer">Quer aprender mais sobre o Real Digital?</HoverCardTrigger>
-            <HoverCardContent>
-              <a href="https://discord.com/invite/D6nMD2CSs6" className="text-[#dc2c2a]">Clique aqui</a> para aprender mais sobre o Real Digital na comunidade da Vega Crypto
-            </HoverCardContent>
-          </HoverCard>
-        </div>
-
+        <img src="/purple-lines.svg" alt="" className="absolute w-[12vw] z-0 left-0 bottom-0"/>
+        <img src="/green-lines.svg" alt="" className="w-[10vw] absolute z-0 right-0 top-0 bottom-0"/>
       </div>
     </AuthProvider>
 
   )
 }
-=======
-'use client'
-import { AuthProvider } from "../../context/authContext";
-import Chat from "../../pages/chat";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "../ui/hover-card";
-
-export default function Home() {
-  return (
-    <AuthProvider>
-      <div className="flex flex-col gap-[20px] min-h-screen bg-neutral-200 items-center justify-center">
-        <Chat />
-
-        <div className="flex max-md:hidden">
-          <HoverCard>
-            <HoverCardTrigger className="cursor-pointer">Quer aprender mais sobre o Real Digital?</HoverCardTrigger>
-            <HoverCardContent>
-              <a href="https://discord.com/invite/D6nMD2CSs6" className="text-[#dc2c2a]">Clique aqui</a> para aprender mais sobre o Real Digital na comunidade da Vega Crypto
-            </HoverCardContent>
-          </HoverCard>
-        </div>
-
-      </div>
-    </AuthProvider>
-
-  )
-}
->>>>>>> 712be936 (commit)

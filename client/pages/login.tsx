@@ -31,7 +31,7 @@ const Login: React.FC<LoginProps> = ({ onRegisterClick }) => {
     }
 
     try {
-      const response = await fetch('https://veguinha-backend.rj.r.appspot.com/auth', {
+      const response = await fetch('172.0.0.1:5000/auth', {
         method: 'POST',
         headers: { 'Content-Type':'application/json' },
         body: JSON.stringify(requestBody),
