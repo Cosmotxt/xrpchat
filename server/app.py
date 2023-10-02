@@ -3,7 +3,7 @@ import pyrebase
 from bot import get_response
 from flask_cors import CORS
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "https://xrpchat.vercel.app"}})
 
 config = {
     'apiKey': "AIzaSyAZDuSI9RwZlg6SziXPhXjIz30yQAsogMo",
