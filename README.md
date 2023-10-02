@@ -16,6 +16,7 @@ XRPChat is an AI-powered chatbot designed to provide coherent and relevant answe
 ### Installation
 
 ```git clone https://github.com/Cosmotxt/xrpchat.git```
+
 ```pip install -r requirements.txt```
 
 Fill in the variable information in the ```env.example``` file and rename it to ```.env```.
