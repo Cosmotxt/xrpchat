@@ -168,6 +168,8 @@ export default function Chat() {
             }
         }
 
+        console.log(messageId)
+        console.log(messages.length)
 
         const requestBody = { input: input, id: userId, lang: selectedLang, messageId: messageId }
 
@@ -190,13 +192,13 @@ export default function Chat() {
                 let erro = data.error
                 let newContent = (erro.split('LLM output: ')[1])
                 console.log(newContent)
-                const newResponse = { sender: 'vegabot', content: newContent, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8' }
+                const newResponse = { sender: 'vegabot', content: newContent, style: 'flex items-start gap-2 text-slate-600 text-[1.5vh] max-lg:text-sm mt-8' }
                 setMessages([...messages, newMessage, newResponse])
             } else {
                 messageId++
                 let newContent = data.result
                 let source = data.source
-                const newResponse = { sender: 'vegabot', content: newContent, sources: source, style: 'flex items-start gap-2 text-slate-600 text-sm mt-8' }
+                const newResponse = { sender: 'vegabot', content: newContent, sources: source, style: 'flex items-start gap-2 text-slate-600 text-[1.5vh] max-lg:text-sm mt-8' }
                 setMessages([...messages, newMessage, newResponse])
             }
 
@@ -254,13 +256,13 @@ export default function Chat() {
 
     return (
         <div>
-            <div className='flex rounded-[35px] '>
-                <div className="h-[85vh] w-[15vw] bg-black rounded-l-[2vh] max-lg:rounded-none max-lg:h-[80px]">
+            <div className='flex rounded-[35px] max-lg:h-screen'>
+                <div className="h-[85vh] w-[15vw] bg-black rounded-l-[2vh] max-lg:rounded-none max-lg:h-[80px] max-lg:hidden">
                     <div className='flex flex-col items-center justify-between h-full p-[4.5vh] overflow-hidden'>
                         <Image src='/ledger_logo.png' className='' width={1000} height={1000} alt="Ledger Logo" />
                         
                         <div className='flex gap-2'>
-                            <select value={selectedLang} onChange={handleConfig} className='bg-[#232325] text-[1.7vh] text-neutral-300 w-[8vw] h-[3.5vh] rounded-[1vh] cursor-pointer pl-[1vh]'>
+                            <select value={selectedLang} onChange={handleConfig} className='bg-[#232325] text-[1.7vh] text-neutral-300 w-[8vw] h-[3.5vh] rounded-[1vh] cursor-pointer pl-[0.3vw]'>
                                 <option value="pt">Português</option>
                                 <option value="es">Español</option>
                                 <option value="en">English</option>
@@ -274,9 +276,9 @@ export default function Chat() {
                     </div>
 
                 </div>
-                <Card className="flex flex-col w-[40vw] border-r-[1.3vh] border-b-[1.3vh] bg-[#111112] border-t-[1.3vh] border-black justify-between rounded-r-[2vh] rounded-l-none max-lg:w-screen max-lg:h-screen max-lg:rounded-none">
-                    <CardContent className='flex flex-col items-center justify-center'>
-                        <ScrollArea className="h-[75vh] min-w-full px-[2vw] max-lg:h-[74vh]" >
+                <Card className="flex flex-col w-[40vw] border-r-[1.3vh] border-b-[1.3vh] bg-[#111112] border-t-[1.3vh] border-black rounded-r-[2vh] rounded-l-none max-lg:w-screen max-lg:rounded-none max-lg:border-0">
+                    <CardContent className='flex flex-col items-center'>
+                        <ScrollArea className="h-[75vh] min-w-full px-[2vw] max-lg:h-[93vh] max-lg:px-[20px]" >
                             <div className={tipsView}>
                                 <CardTips text='O que é a XRP Ledger?' onClick={() => {
                                     setInput('O que é a XRP Ledger?')
@@ -284,27 +286,27 @@ export default function Chat() {
                                 }} />
 
                                 <CardTips text='Qual o objetivo da XRP Ledger?' onClick={() => {
-                                    setInput('Qual o objetivo da XRP Ledger?')
+                                    setInput('O Real Digital é uma criptomoeda?')
                                     setTipsView('flex hidden')
                                 }} />
 
                                 <CardTips text='Por que eu devo usar a XRP Ledger?' onClick={() => {
-                                    setInput('Por que eu devo usar a XRP Ledger?')
+                                    setInput('O que é a Vega Crypto?')
                                     setTipsView('flex hidden')
                                 }} />
 
                                 <CardTips text='Como funciona a XRP Ledger?' onClick={() => {
-                                    setInput('Como funciona a XRP Ledger?')
+                                    setInput('Qual a diferença do Real Digital para o pix?')
                                     setTipsView('flex hidden')
                                 }} />
                                 
                                 <CardTips text='Como posso começar a usar a XRP Ledger?' onClick={() => {
-                                    setInput('Como posso começar a usar a XRP Ledger?')
+                                    setInput('Quais os principais benefícios do Real Digital?')
                                     setTipsView('flex hidden')
                                 }} />
 
                                 <CardTips text='Como posso me juntar à comunidade da XRP Ledger?' onClick={() => {
-                                    setInput('Como posso me juntar à comunidade da XRP Ledger?')
+                                    setInput('Quais os riscos do Real Digital?')
                                     setTipsView('flex hidden')
                                 }} />
 
@@ -316,12 +318,12 @@ export default function Chat() {
                                     {message.sender === 'you' && (
                                         <div className='flex gap-[2vh] justify-end mt-[5vh]'>
                                             <Card className="max-w-[85%] bg-zinc-800 text-neutral-300 rounded-[3vh]">
-                                                <CardContent className="flex flex-wrap min-h-[5vh] max-w-[100%] px-[1vw] py-[1.4vh] text-[1.5vh]" >
+                                                <CardContent className="flex flex-wrap min-h-[5vh] max-w-[100%] px-[1vw] py-[1.4vh] text-[1.5vh] max-lg:text-sm max-lg:px-4" >
                                                     {message.content}
                                                 </CardContent>
                                             </Card>
 
-                                            <Avatar className='h-[4.2vh] w-[4.2vh] text-[1.5vh]'>
+                                            <Avatar className='h-[4.2vh] w-[4.2vh] text-[1.5vh] max-lg:text-sm max-lg:hidden'>
                                                 <AvatarFallback>You</AvatarFallback>
                                                 {selectedImage && (
                                                     <AvatarImage src={URL.createObjectURL(selectedImage)} onLoad={() => URL.revokeObjectURL(URL.createObjectURL(selectedImage))}></AvatarImage>
@@ -333,24 +335,23 @@ export default function Chat() {
 
                                     {message.messageId === messages.length && (
                                         isLoading && (
-                                            <div className='flex items-start gap-[2vh] mt-[2vh]'>
-                                                <Skeleton className="h-[4.2vh] w-[4.2vh] rounded-full" />
-                                                <Skeleton className="min-h-[5vh] px-[2vh] py-[1.4vh] text-[1.5vh] text-zinc-800 rounded-[3vh]">
+                                            <div className='flex items-start gap-[2vh] mt-[2vh] mb-2'>
+                                                <Skeleton className="h-[4.2vh] w-[4.2vh] rounded-full max-lg:hidden" />
+                                                <Skeleton className="min-h-[5vh] px-[2vh] py-[1.4vh] text-[1.5vh] max-lg:text-sm text-zinc-800 rounded-[3vh]">
                                                     Digitando...
                                                 </Skeleton>
-                                                
                                             </div>
                                         )
                                     )}
 
                                     {message.sender == 'vegabot' && (
                                         <div key={index} className='flex gap-[2vh] mt-[5vh] mb-2'>
-                                            <Avatar className='h-[4.2vh] w-[4.2vh] text-[1.5vh]'>
-                                                <AvatarFallback>V</AvatarFallback>
-                                                <AvatarImage src='https://media.licdn.com/dms/image/C4E0BAQGyYeVLJFb-IA/company-logo_200_200/0/1641913708341?e=1700092800&v=beta&t=R3cAjt11_Y54RLcZSHnSthEtfB33EXlAT2hy3zXArvU'></AvatarImage>
+                                            <Avatar className='h-[4.2vh] w-[4.2vh] text-[1.5vh] max-lg:text-sm bg-neutral-300 max-lg:hidden'>
+                                                <AvatarFallback>X</AvatarFallback>
+                                                <AvatarImage src='xrpl-logo-flat.svg' className='w-[1.5vw] h-[2.5vh] m-auto'></AvatarImage>
                                             </Avatar>
-                                            <Card className="max-w-[85%] bg-transparent text-neutral-300 rounded-[3vh] border">
-                                                <CardContent className="flex flex-wrap min-h-[5vh] max-w-[100%] px-[1vw] py-[1.4vh] text-[1.5vh]">
+                                            <Card className="lg:max-w-[85%] bg-transparent text-neutral-300 rounded-[3vh] border">
+                                                <CardContent className="flex flex-wrap min-h-[5vh] max-w-[100%] lg:px-[1vw] lg:py-[1.4vh] text-[1.5vh] max-lg:text-sm p-[20px]">
                                                     <MarkdownDisplay content={message.content} />
                                                 </CardContent>
                                             </Card>
@@ -373,19 +374,17 @@ export default function Chat() {
                             ))}
 
                             <div ref={messageEndRef} />
-
-                            
                         </ScrollArea>
                         <CardFooter>
                                 {isLoading ? (
                                     <div className="flex gap-[1vh]" >
-                                        <Input type='text' className='bg-[#232325] pl-[1.5vh] text-[1.5vh] text-neutral-300 rounded-[1vh] w-[30vw] h-[5vh] placeholder:text-neutral-300 placeholder:text-[1.5vh]' placeholder="Aguarde um momento enquanto eu processo sua resposta" value={input} onChange={e => setInput(e.target.value)} />
-                                        <Button type="submit" className="bg-[#232325] rounded-[1vh] w-[3vw] h-[5vh]"> <svg xmlns="http://www.w3.org/2000/svg" height="2vh" fill='#dcdcdc' viewBox="0 0 512 512"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z" /></svg> </Button>
+                                        <Input type='text' className='bg-[#232325] pl-[1.5vh] text-[1.5vh] text-neutral-300 rounded-[1vh] w-[30vw] h-[5vh] placeholder:text-neutral-300 placeholder:text-[1.5vh] max-lg:text-sm max-lg:w-[80vw]' placeholder="Aguarde um momento enquanto eu processo sua resposta" value={input} onChange={e => setInput(e.target.value)} />
+                                        <Button type="submit" className="bg-[#232325] rounded-[1vh] h-[5vh]"> <svg xmlns="http://www.w3.org/2000/svg" height="15px" fill='#dcdcdc' viewBox="0 0 512 512"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z" /></svg> </Button>
                                     </div>
                                 ) : (
                                     <div className="flex gap-[1vh]" >
-                                        <Input type='text' className='bg-[#232325] pl-[1.5vh] text-[1.5vh] text-neutral-300 rounded-[1vh] w-[30vw] h-[5vh] placeholder:text-neutral-300 placeholder:text-[1.5vh]' placeholder="Me faça uma pergunta sobre a XRPL" value={input} onChange={e => setInput(e.target.value)} onKeyDown={handleKeyPress} />
-                                        <Button type="submit" className="bg-[#232325] rounded-[1vh] w-[3vw] h-[5vh]" onClick={handleInput}> <svg xmlns="http://www.w3.org/2000/svg" height="2vh" fill='#dcdcdc' viewBox="0 0 512 512"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z" /></svg> </Button>
+                                        <Input type='text' className='bg-[#232325] pl-[1.5vh] text-[1.5vh] text-neutral-300 rounded-[1vh] w-[30vw] h-[5vh] placeholder:text-neutral-300 placeholder:text-[1.5vh] max-lg:text-sm max-lg:w-[80vw]' placeholder="Me faça uma pergunta sobre a XRPL" value={input} onChange={e => setInput(e.target.value)} onKeyDown={handleKeyPress} />
+                                        <Button type="submit" className="bg-[#232325] rounded-[1vh] h-[5vh]" onClick={handleInput}> <svg xmlns="http://www.w3.org/2000/svg" height="15px" fill='#dcdcdc' viewBox="0 0 512 512"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z" /></svg> </Button>
                                     </div>
                                 )}
                         </CardFooter>
