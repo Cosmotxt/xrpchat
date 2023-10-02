@@ -30,7 +30,7 @@ const Register: React.FC<RegisterProps> = ({ onLoginClick }) => {
     }
   
     try {
-      const response = await fetch('172.0.0.1:5000/auth', {
+      const response = await fetch('https://vegachatbot123.rj.r.appspot.com/auth', {
         method: 'POST',
         headers: { 'Content-Type':'application/json' },
         body: JSON.stringify(requestBody),

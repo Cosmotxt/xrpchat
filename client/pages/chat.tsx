@@ -176,7 +176,7 @@ export default function Chat() {
         try {
             setIsLoading(true)
             setTipsView('flex hidden')
-            const response = await fetch('172.0.0.1:5000/predict', {
+            const response = await fetch('https://vegachatbot123.rj.r.appspot.com/predict', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestBody),
