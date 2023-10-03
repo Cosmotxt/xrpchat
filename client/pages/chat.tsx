@@ -192,13 +192,13 @@ export default function Chat() {
                 let erro = data.error
                 let newContent = (erro.split('LLM output: ')[1])
                 console.log(newContent)
-                const newResponse = { sender: 'vegabot', content: newContent, style: 'flex items-start gap-2 text-slate-600 text-[1.5vh] max-lg:text-sm mt-8' }
+                const newResponse = { sender: 'vegabot', content: newContent}
                 setMessages([...messages, newMessage, newResponse])
             } else {
                 messageId++
                 let newContent = data.result
                 let source = data.source
-                const newResponse = { sender: 'vegabot', content: newContent, sources: source, style: 'flex items-start gap-2 text-slate-600 text-[1.5vh] max-lg:text-sm mt-8' }
+                const newResponse = { sender: 'vegabot', content: newContent, sources: source}
                 setMessages([...messages, newMessage, newResponse])
             }
 
