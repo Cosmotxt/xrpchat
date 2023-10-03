@@ -276,8 +276,8 @@ export default function Chat() {
                     </div>
 
                 </div>
-                <Card className="flex flex-col w-[40vw] border-r-[1.3vh] border-b-[1.3vh] bg-[#111112] border-t-[1.3vh] border-black rounded-r-[2vh] rounded-l-none max-lg:w-screen max-lg:rounded-none max-lg:border-0">
-                    <CardContent className='flex flex-col items-center'>
+                <Card className="flex flex-col w-[40vw] border-r-[1.3vh] relative border-b-[1.3vh] bg-[#111112] border-t-[1.3vh] border-black rounded-r-[2vh] rounded-l-none max-lg:w-screen max-lg:rounded-none max-lg:border-0">
+                    <CardContent className='flex flex-col items-center '>
                         <ScrollArea className="h-[75vh] min-w-full px-[2vw] max-lg:h-[93vh] max-lg:px-[20px]" >
                             <div className={tipsView}>
                                 <CardTips text='O que é a XRP Ledger?' onClick={() => {
@@ -375,7 +375,7 @@ export default function Chat() {
 
                             <div ref={messageEndRef} />
                         </ScrollArea>
-                        <CardFooter>
+                        <CardFooter className='bottom-5 absolute'>
                                 {isLoading ? (
                                     <div className="flex gap-[1vh]" >
                                         <Input type='text' className='bg-[#232325] pl-[1.5vh] text-[1.5vh] text-neutral-300 rounded-[1vh] w-[30vw] h-[5vh] max-lg:h-[40px] placeholder:text-neutral-300 placeholder:text-sm max-lg:text-sm max-lg:w-[80vw]' placeholder="Aguarde um momento enquanto eu processo sua resposta" value={input} onChange={e => setInput(e.target.value)} />
